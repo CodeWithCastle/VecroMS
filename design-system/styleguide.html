@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VecroMS Design System</title>
+  <meta name="description" content="Colour, type, spacing, elevation, motion and component reference for VecroMS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="assets/styleguide.css">
+  <script>
+    /* Apply a pinned theme before first paint to avoid a flash. */
+    (function () {
+      try {
+        var saved = localStorage.getItem("vms-theme");
+        if (saved === "light" || saved === "dark") {
+          document.documentElement.setAttribute("data-theme", saved);
+        }
+      } catch (err) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Icon sprite -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8M16 13H8M16 17H8"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h16"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M8 16h8"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-4.9-4.5-9-10-9Z"/></symbol>
+    <symbol id="i-type" viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-dollar" viewBox="0 0 24 24"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="#top">
+        <span class="mark" aria-hidden="true">V</span>
+        <span class="brand-text"><strong>VecroMS</strong> <span>Design System</span></span>
+      </a>
+      <span class="version">v1.0.0</span>
+    </div>
+    <div class="topbar-right">
+      <a class="topbar-link" href="#components">Components</a>
+      <a class="topbar-link" href="#accessibility">Accessibility</a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+        <svg class="icon" id="themeIcon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Sections">
+    <a href="#brand">Brand</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#space">Space</a><a href="#components">Components</a><a href="#patterns">Patterns</a><a href="#accessibility">A11y</a>
+  </nav>
+
+  <div class="shell">
+    <aside class="rail" aria-label="Sections">
+      <p class="rail-title">Foundations</p>
+      <nav class="rail-nav">
+        <a href="#brand"><span>01</span>Brand</a>
+        <a href="#colour"><span>02</span>Colour</a>
+        <a href="#type"><span>03</span>Typography</a>
+        <a href="#space"><span>04</span>Space &amp; layout</a>
+        <a href="#elevation"><span>05</span>Elevation &amp; motion</a>
+      </nav>
+      <p class="rail-title">Build</p>
+      <nav class="rail-nav">
+        <a href="#components"><span>06</span>Components</a>
+        <a href="#patterns"><span>07</span>Patterns</a>
+        <a href="#accessibility"><span>08</span>Accessibility</a>
+      </nav>
+      <div class="rail-note">
+        <span class="rail-note-title">Source of truth</span>
+        <code>tokens/tokens.json</code>
+        <span>Run <code>node tokens/build.mjs</code> after edits.</span>
+      </div>
+    </aside>
+
+    <main id="main" class="content">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Design system · v1.0.0</p>
+          <h1>One system for every screen.</h1>
+          <p class="lede">Colour, type, spacing, elevation, motion and 39 component specs for the VecroMS React rebuild — built from the green and yellow in the legacy brand mark.</p>
+          <div class="meta-row">
+            <span class="meta-chip"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>WCAG 2.2 AA</span>
+            <span class="meta-chip"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg>Light + dark</span>
+            <span class="meta-chip"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>267 tokens</span>
+          </div>
+          <div class="hero-actions">
+            <a class="vms-btn vms-btn--primary" href="#components">Browse components</a>
+            <a class="vms-btn vms-btn--secondary" href="#colour">Colour tokens</a>
+          </div>
+        </div>
+        <div class="preview" aria-label="Dashboard preview">
+          <div class="preview-top">
+            <span class="preview-brand"><span class="preview-dot"></span>Workshop overview</span>
+            <span class="vms-badge vms-badge--success"><span class="dot"></span>Live</span>
+          </div>
+          <div class="preview-metric">
+            <span class="overline">Jobs today</span>
+            <div class="preview-value">128</div>
+            <span class="preview-delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>12.4% vs last week</span>
+          </div>
+          <div class="preview-list">
+            <div class="preview-row"><span class="mono">JB-1042</span><span class="vms-badge vms-badge--primary"><span class="dot"></span>In progress</span></div>
+            <div class="preview-row"><span class="mono">JB-1041</span><span class="vms-badge vms-badge--warning"><span class="dot"></span>Awaiting parts</span></div>
+            <div class="preview-row"><span class="mono">JB-1040</span><span class="vms-badge vms-badge--success"><span class="dot"></span>Completed</span></div>
+            <div class="preview-row"><span class="mono">JB-1039</span><span class="vms-badge vms-badge--danger"><span class="dot"></span>Overdue</span></div>
+          </div>
+          <div class="preview-foot">
+            <span>4 bays active</span>
+            <span class="preview-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="brand">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 · Brand</p>
+            <h2 class="section-title">Green means go. Yellow means look.</h2>
+            <p class="section-lede">The palette is sampled from the existing brand mark: a green car outline with yellow windows. VecroMS keeps the symbol, replaces the wordmark, and uses the green for action and the yellow for attention.</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="specimen brand-specimen">
+            <div class="brand-lockup">
+              <span class="mark mark--lg" aria-hidden="true">V</span>
+              <div><strong>VecroMS</strong><span>Fleet operations, clearly.</span></div>
+            </div>
+            <p class="muted">The mark is a rounded green tile with a white V and a yellow signal dot. Clearspace is half the tile height. Minimum width is 96px.</p>
+            <div class="brand-swatches">
+              <div><span class="chip" style="background:#00923F"></span><code>#00923F</code><small>Brand green</small></div>
+              <div><span class="chip" style="background:#FFF500"></span><code>#FFF500</code><small>Brand yellow</small></div>
+            </div>
+          </div>
+          <div class="specimen">
+            <h3 class="specimen-title">Voice</h3>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Direct.</strong> Verb + object: “Create job”, “Assign technician”.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Specific.</strong> Name the record: “Delete booking BK-1042?”</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Calm.</strong> Errors say what happened and how to fix it.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg><span><strong>Not cute.</strong> No “Oops”, no exclamation marks, no blame.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="colour">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 · Colour</p>
+            <h2 class="section-title">A calm neutral base, one confident green.</h2>
+            <p class="section-lede">Primitives feed semantic roles; components only consume the roles. Click any swatch to copy its hex.</p>
+          </div>
+          <div class="legend">
+            <span><i class="legend-dot" style="background:var(--vms-primary)"></i>Action</span>
+            <span><i class="legend-dot" style="background:var(--vms-color-brand-yellow-400)"></i>Accent</span>
+            <span><i class="legend-dot" style="background:var(--vms-danger-solid)"></i>Risk</span>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Brand green</h3><span>11 steps · <code>--vms-color-brand-green-*</code></span></div>
+        <div class="swatch-grid">
+          <button class="swatch" type="button" data-copy="#E8F7EF" style="--swatch:#E8F7EF" title="Copy #E8F7EF"><span class="chip"></span><span class="meta"><span class="name">green.50</span><span class="hex">#E8F7EF</span></span></button>
+          <button class="swatch" type="button" data-copy="#C6EEDA" style="--swatch:#C6EEDA" title="Copy #C6EEDA"><span class="chip"></span><span class="meta"><span class="name">green.100</span><span class="hex">#C6EEDA</span></span></button>
+          <button class="swatch" type="button" data-copy="#91DFB7" style="--swatch:#91DFB7" title="Copy #91DFB7"><span class="chip"></span><span class="meta"><span class="name">green.200</span><span class="hex">#91DFB7</span></span></button>
+          <button class="swatch" type="button" data-copy="#57CD92" style="--swatch:#57CD92" title="Copy #57CD92"><span class="chip"></span><span class="meta"><span class="name">green.300</span><span class="hex">#57CD92</span></span></button>
+          <button class="swatch" type="button" data-copy="#20B96E" style="--swatch:#20B96E" title="Copy #20B96E"><span class="chip"></span><span class="meta"><span class="name">green.400</span><span class="hex">#20B96E</span></span></button>
+          <button class="swatch swatch--brand" type="button" data-copy="#00923F" style="--swatch:#00923F" title="Copy #00923F"><span class="chip"></span><span class="meta"><span class="name">green.500 · brand</span><span class="hex">#00923F</span></span></button>
+          <button class="swatch swatch--brand" type="button" data-copy="#00863A" style="--swatch:#00863A" title="Copy #00863A"><span class="chip"></span><span class="meta"><span class="name">green.600 · action</span><span class="hex">#00863A</span></span></button>
+          <button class="swatch" type="button" data-copy="#007A33" style="--swatch:#007A33" title="Copy #007A33"><span class="chip"></span><span class="meta"><span class="name">green.700</span><span class="hex">#007A33</span></span></button>
+          <button class="swatch" type="button" data-copy="#006A2D" style="--swatch:#006A2D" title="Copy #006A2D"><span class="chip"></span><span class="meta"><span class="name">green.800</span><span class="hex">#006A2D</span></span></button>
+          <button class="swatch" type="button" data-copy="#005424" style="--swatch:#005424" title="Copy #005424"><span class="chip"></span><span class="meta"><span class="name">green.900</span><span class="hex">#005424</span></span></button>
+          <button class="swatch" type="button" data-copy="#00381A" style="--swatch:#00381A" title="Copy #00381A"><span class="chip"></span><span class="meta"><span class="name">green.950</span><span class="hex">#00381A</span></span></button>
+        </div>
+
+        <div class="subhead"><h3>Brand yellow</h3><span>10 steps · <code>--vms-color-brand-yellow-*</code></span></div>
+        <div class="swatch-grid">
+          <button class="swatch" type="button" data-copy="#FFFDE6" style="--swatch:#FFFDE6" title="Copy #FFFDE6"><span class="chip"></span><span class="meta"><span class="name">yellow.50</span><span class="hex">#FFFDE6</span></span></button>
+          <button class="swatch" type="button" data-copy="#FFFBBD" style="--swatch:#FFFBBD" title="Copy #FFFBBD"><span class="chip"></span><span class="meta"><span class="name">yellow.100</span><span class="hex">#FFFBBD</span></span></button>
+          <button class="swatch" type="button" data-copy="#FFF580" style="--swatch:#FFF580" title="Copy #FFF580"><span class="chip"></span><span class="meta"><span class="name">yellow.200</span><span class="hex">#FFF580</span></span></button>
+          <button class="swatch" type="button" data-copy="#FFF13D" style="--swatch:#FFF13D" title="Copy #FFF13D"><span class="chip"></span><span class="meta"><span class="name">yellow.300</span><span class="hex">#FFF13D</span></span></button>
+          <button class="swatch swatch--brand" type="button" data-copy="#FFF500" style="--swatch:#FFF500" title="Copy #FFF500"><span class="chip"></span><span class="meta"><span class="name">yellow.400 · brand</span><span class="hex">#FFF500</span></span></button>
+          <button class="swatch" type="button" data-copy="#E6DC00" style="--swatch:#E6DC00" title="Copy #E6DC00"><span class="chip"></span><span class="meta"><span class="name">yellow.500</span><span class="hex">#E6DC00</span></span></button>
+          <button class="swatch" type="button" data-copy="#BFB700" style="--swatch:#BFB700" title="Copy #BFB700"><span class="chip"></span><span class="meta"><span class="name">yellow.600</span><span class="hex">#BFB700</span></span></button>
+          <button class="swatch" type="button" data-copy="#999200" style="--swatch:#999200" title="Copy #999200"><span class="chip"></span><span class="meta"><span class="name">yellow.700</span><span class="hex">#999200</span></span></button>
+          <button class="swatch" type="button" data-copy="#706B00" style="--swatch:#706B00" title="Copy #706B00"><span class="chip"></span><span class="meta"><span class="name">yellow.800</span><span class="hex">#706B00</span></span></button>
+          <button class="swatch" type="button" data-copy="#474400" style="--swatch:#474400" title="Copy #474400"><span class="chip"></span><span class="meta"><span class="name">yellow.900</span><span class="hex">#474400</span></span></button>
+        </div>
+
+        <div class="subhead"><h3>Neutral</h3><span>13 steps · <code>--vms-color-neutral-*</code></span></div>
+        <div class="swatch-grid swatch-grid--dense">
+          <button class="swatch" type="button" data-copy="#FFFFFF" style="--swatch:#FFFFFF" title="Copy #FFFFFF"><span class="chip"></span><span class="meta"><span class="name">neutral.0</span><span class="hex">#FFFFFF</span></span></button>
+          <button class="swatch" type="button" data-copy="#FCFDFE" style="--swatch:#FCFDFE" title="Copy #FCFDFE"><span class="chip"></span><span class="meta"><span class="name">neutral.25</span><span class="hex">#FCFDFE</span></span></button>
+          <button class="swatch" type="button" data-copy="#F6F9FC" style="--swatch:#F6F9FC" title="Copy #F6F9FC"><span class="chip"></span><span class="meta"><span class="name">neutral.50</span><span class="hex">#F6F9FC</span></span></button>
+          <button class="swatch" type="button" data-copy="#F2F4F7" style="--swatch:#F2F4F7" title="Copy #F2F4F7"><span class="chip"></span><span class="meta"><span class="name">neutral.100</span><span class="hex">#F2F4F7</span></span></button>
+          <button class="swatch" type="button" data-copy="#E9ECEF" style="--swatch:#E9ECEF" title="Copy #E9ECEF"><span class="chip"></span><span class="meta"><span class="name">neutral.200</span><span class="hex">#E9ECEF</span></span></button>
+          <button class="swatch" type="button" data-copy="#D0D5DD" style="--swatch:#D0D5DD" title="Copy #D0D5DD"><span class="chip"></span><span class="meta"><span class="name">neutral.300</span><span class="hex">#D0D5DD</span></span></button>
+          <button class="swatch" type="button" data-copy="#98A2B3" style="--swatch:#98A2B3" title="Copy #98A2B3"><span class="chip"></span><span class="meta"><span class="name">neutral.400</span><span class="hex">#98A2B3</span></span></button>
+          <button class="swatch" type="button" data-copy="#667085" style="--swatch:#667085" title="Copy #667085"><span class="chip"></span><span class="meta"><span class="name">neutral.500</span><span class="hex">#667085</span></span></button>
+          <button class="swatch" type="button" data-copy="#475467" style="--swatch:#475467" title="Copy #475467"><span class="chip"></span><span class="meta"><span class="name">neutral.600</span><span class="hex">#475467</span></span></button>
+          <button class="swatch" type="button" data-copy="#344054" style="--swatch:#344054" title="Copy #344054"><span class="chip"></span><span class="meta"><span class="name">neutral.700</span><span class="hex">#344054</span></span></button>
+          <button class="swatch" type="button" data-copy="#1D2939" style="--swatch:#1D2939" title="Copy #1D2939"><span class="chip"></span><span class="meta"><span class="name">neutral.800</span><span class="hex">#1D2939</span></span></button>
+          <button class="swatch" type="button" data-copy="#101828" style="--swatch:#101828" title="Copy #101828"><span class="chip"></span><span class="meta"><span class="name">neutral.900</span><span class="hex">#101828</span></span></button>
+          <button class="swatch" type="button" data-copy="#0B1220" style="--swatch:#0B1220" title="Copy #0B1220"><span class="chip"></span><span class="meta"><span class="name">neutral.950</span><span class="hex">#0B1220</span></span></button>
+        </div>
+
+        <div class="subhead"><h3>Semantic roles</h3><span>Consume these, not the primitives</span></div>
+        <div class="role-grid">
+          <div class="role"><span class="role-chip" style="background:var(--vms-primary)"></span><div><code>--vms-primary</code><small>Actions, links, active nav</small></div><span class="role-hex" data-var="--vms-primary">#00863A</span></div>
+          <div class="role"><span class="role-chip" style="background:var(--vms-primary-subtle)"></span><div><code>--vms-primary-subtle</code><small>Selected rows, tinted badges</small></div><span class="role-hex" data-var="--vms-primary-subtle">#E8F7EF</span></div>
+          <div class="role"><span class="role-chip" style="background:var(--vms-bg-canvas);border:1px solid var(--vms-border-default)"></span><div><code>--vms-bg-canvas</code><small>Page background</small></div><span class="role-hex" data-var="--vms-bg-canvas">#F6F9FC</span></div>
+          <div class="role"><span class="role-chip" style="background:var(--vms-bg-surface);border:1px solid var(--vms-border-default)"></span><div><code>--vms-bg-surface</code><small>Cards, inputs, modals</small></div><span class="role-hex" data-var="--vms-bg-surface">#FFFFFF</span></div>
+          <div class="role"><span class="role-chip" style="background:var(--vms-text-primary)"></span><div><code>--vms-text-primary</code><small>Body and headings</small></div><span class="role-hex" data-var="--vms-text-primary">#101828</span></div>
+          <div class="role"><span class="role-chip" style="background:var(--vms-text-secondary)"></span><div><code>--vms-text-secondary</code><small>Supporting copy</small></div><span class="role-hex" data-var="--vms-text-secondary">#475467</span></div>
+          <div class="role"><span class="role-chip" style="background:var(--vms-border-default)"></span><div><code>--vms-border-default</code><small>Inputs, cards</small></div><span class="role-hex" data-var="--vms-border-default">#D0D5DD</span></div>
+          <div class="role"><span class="role-chip" style="background:var(--vms-danger-solid)"></span><div><code>--vms-danger-solid</code><small>Destructive, overdue</small></div><span class="role-hex" data-var="--vms-danger-solid">#F04438</span></div>
+        </div>
+
+        <div class="subhead"><h3>Status</h3><span>Dot + label, always</span></div>
+        <div class="status-grid">
+          <div class="status-card"><span class="vms-badge vms-badge--success"><span class="dot"></span>Success</span><code>--vms-success-*</code><div class="tone-strip"><i style="background:var(--vms-success-bg)"></i><i style="background:var(--vms-success-border)"></i><i style="background:var(--vms-success-solid)"></i><i style="background:var(--vms-success-fg)"></i></div></div>
+          <div class="status-card"><span class="vms-badge vms-badge--warning"><span class="dot"></span>Warning</span><code>--vms-warning-*</code><div class="tone-strip"><i style="background:var(--vms-warning-bg)"></i><i style="background:var(--vms-warning-border)"></i><i style="background:var(--vms-warning-solid)"></i><i style="background:var(--vms-warning-fg)"></i></div></div>
+          <div class="status-card"><span class="vms-badge vms-badge--danger"><span class="dot"></span>Danger</span><code>--vms-danger-*</code><div class="tone-strip"><i style="background:var(--vms-danger-bg)"></i><i style="background:var(--vms-danger-border)"></i><i style="background:var(--vms-danger-solid)"></i><i style="background:var(--vms-danger-fg)"></i></div></div>
+          <div class="status-card"><span class="vms-badge vms-badge--info"><span class="dot"></span>Info</span><code>--vms-info-*</code><div class="tone-strip"><i style="background:var(--vms-info-bg)"></i><i style="background:var(--vms-info-border)"></i><i style="background:var(--vms-info-solid)"></i><i style="background:var(--vms-info-fg)"></i></div></div>
+          <div class="status-card"><span class="vms-badge vms-badge--neutral"><span class="dot"></span>Neutral</span><code>--vms-neutral-*</code><div class="tone-strip"><i style="background:var(--vms-neutral-bg)"></i><i style="background:var(--vms-neutral-border)"></i><i style="background:var(--vms-neutral-solid)"></i><i style="background:var(--vms-neutral-fg)"></i></div></div>
+          <div class="status-card"><span class="vms-badge vms-badge--accent"><span class="dot"></span>Accent</span><code>--vms-accent-*</code><div class="tone-strip"><i style="background:var(--vms-accent-bg)"></i><i style="background:var(--vms-accent-border)"></i><i style="background:var(--vms-accent-solid)"></i><i style="background:var(--vms-accent-fg)"></i></div></div>
+        </div>
+
+        <div class="subhead"><h3>Data visualisation</h3><span>8 series · colour-blind aware</span></div>
+        <div class="specimen chart-specimen">
+          <div class="chart-bars" role="img" aria-label="Example bar chart using the chart palette">
+            <span style="--h:42%;--c:var(--vms-chart-1)"></span><span style="--h:68%;--c:var(--vms-chart-2)"></span><span style="--h:54%;--c:var(--vms-chart-3)"></span><span style="--h:80%;--c:var(--vms-chart-4)"></span><span style="--h:36%;--c:var(--vms-chart-5)"></span><span style="--h:62%;--c:var(--vms-chart-6)"></span><span style="--h:74%;--c:var(--vms-chart-7)"></span><span style="--h:28%;--c:var(--vms-chart-8)"></span>
+          </div>
+          <div class="chart-legend">
+            <span><i style="background:var(--vms-chart-1)"></i>Jobs</span><span><i style="background:var(--vms-chart-2)"></i>Bookings</span><span><i style="background:var(--vms-chart-3)"></i>Revenue</span><span><i style="background:var(--vms-chart-4)"></i>Inspections</span><span><i style="background:var(--vms-chart-5)"></i>Vehicles</span><span><i style="background:var(--vms-chart-6)"></i>Overdue</span><span><i style="background:var(--vms-chart-7)"></i>Paid</span><span><i style="background:var(--vms-chart-8)"></i>Other</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="type">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 · Typography</p>
+            <h2 class="section-title">Inter for the interface. Mono for the machine.</h2>
+            <p class="section-lede">Inter’s tall x-height keeps 13–14px table text legible; its tabular figures keep columns aligned. Open Sans remains the fallback so the layout survives without the webfont.</p>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="type-row"><div class="type-meta"><code>display-xl</code><span>48 / 56 · 700</span></div><p class="t-display-xl">Run the workshop, not the spreadsheet.</p></div>
+          <div class="type-row"><div class="type-meta"><code>h1</code><span>30 / 38 · 700</span></div><p class="t-h1">Today’s workshop</p></div>
+          <div class="type-row"><div class="type-meta"><code>h2</code><span>24 / 32 · 700</span></div><p class="t-h2">Jobs in progress</p></div>
+          <div class="type-row"><div class="type-meta"><code>h3</code><span>20 / 28 · 600</span></div><p class="t-h3">Awaiting parts</p></div>
+          <div class="type-row"><div class="type-meta"><code>body-lg</code><span>16 / 24 · 400</span></div><p class="t-body-lg">A booking is confirmed when the customer accepts the date and the assigned bay is free.</p></div>
+          <div class="type-row"><div class="type-meta"><code>body</code><span>14 / 22 · 400</span></div><p class="t-body">The default UI size. Use it for table cells, form labels, menu items and most copy.</p></div>
+          <div class="type-row"><div class="type-meta"><code>body-sm</code><span>13 / 20 · 400</span></div><p class="t-body-sm">Compact table cells and helper text sit here. Never go below 12px.</p></div>
+          <div class="type-row"><div class="type-meta"><code>caption</code><span>12 / 16 · 500</span></div><p class="t-caption">Updated 9 Nov 2026, 14:30 WAT</p></div>
+          <div class="type-row"><div class="type-meta"><code>overline</code><span>11 / 16 · 600 · 0.08em</span></div><p class="t-overline">Jobs today</p></div>
+          <div class="type-row"><div class="type-meta"><code>metric</code><span>30 / 36 · 700 · tabular</span></div><p class="t-metric">128</p></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="specimen">
+            <h3 class="specimen-title">Families</h3>
+            <div class="family-row"><span class="family-sample" style="font-family:var(--vms-font-sans)">Aa</span><div><strong>Inter</strong><small>Sans · 400 / 500 / 600 / 700</small><code>--vms-font-sans</code></div></div>
+            <div class="family-row"><span class="family-sample mono" style="font-family:var(--vms-font-mono)">Aa</span><div><strong>JetBrains Mono</strong><small>Plates, VINs, IDs, codes</small><code>--vms-font-mono</code></div></div>
+          </div>
+          <div class="specimen">
+            <h3 class="specimen-title">Rules</h3>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Sentence case everywhere except the <code>overline</code> label.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Max three type sizes inside one card.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Tabular numbers for money, counts and metrics.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Line length 60–75 characters; prose max 680px.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg><span>No uppercase data, no centred paragraphs, no text below 12px.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="space">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 · Space &amp; layout</p>
+            <h2 class="section-title">A 4px rhythm, a 1440px canvas.</h2>
+            <p class="section-lede">Every margin, padding and gap comes from the spacing scale. The app shell is fixed; only the content scrolls.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="specimen">
+            <h3 class="specimen-title">Spacing scale</h3>
+            <div class="space-list">
+              <div class="space-row"><code>space.1</code><span class="space-bar" style="--w:4px"></span><span>4</span></div>
+              <div class="space-row"><code>space.2</code><span class="space-bar" style="--w:8px"></span><span>8</span></div>
+              <div class="space-row"><code>space.3</code><span class="space-bar" style="--w:12px"></span><span>12</span></div>
+              <div class="space-row"><code>space.4</code><span class="space-bar" style="--w:16px"></span><span>16</span></div>
+              <div class="space-row"><code>space.6</code><span class="space-bar" style="--w:24px"></span><span>24</span></div>
+              <div class="space-row"><code>space.8</code><span class="space-bar" style="--w:32px"></span><span>32</span></div>
+              <div class="space-row"><code>space.12</code><span class="space-bar" style="--w:48px"></span><span>48</span></div>
+              <div class="space-row"><code>space.16</code><span class="space-bar" style="--w:64px"></span><span>64</span></div>
+            </div>
+          </div>
+          <div class="specimen">
+            <h3 class="specimen-title">Control heights</h3>
+            <div class="height-list">
+              <div class="height-row"><span>xs</span><i style="height:28px"></i><code>28</code></div>
+              <div class="height-row"><span>sm</span><i style="height:32px"></i><code>32</code></div>
+              <div class="height-row"><span>md</span><i style="height:40px"></i><code>40</code></div>
+              <div class="height-row"><span>lg</span><i style="height:48px"></i><code>48</code></div>
+              <div class="height-row"><span>xl</span><i style="height:56px"></i><code>56</code></div>
+            </div>
+            <p class="muted mt-16">Default is <strong>md (40px)</strong>. Touch targets are at least 44px; icon buttons are at least 32px.</p>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>App shell</h3><span>Topbar 64 · sidebar 264 / 76 · content max 1440</span></div>
+        <div class="specimen">
+          <div class="shell-demo" role="img" aria-label="App shell diagram: 64px topbar, 264px sidebar, page content with header, four stat cards and a table">
+            <div class="shell-demo-top">Topbar · search · notifications · avatar</div>
+            <div class="shell-demo-body">
+              <div class="shell-demo-side"><span class="mark" aria-hidden="true">V</span><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="shell-demo-main">
+                <div class="shell-demo-header">Page header · title + actions</div>
+                <div class="shell-demo-cards"><i></i><i></i><i></i><i></i></div>
+                <div class="shell-demo-block">Table / content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Breakpoints</h3><span>Mobile-first</span></div>
+        <div class="specimen table-simple">
+          <table class="vms-table">
+            <thead><tr><th>Token</th><th>Min width</th><th>Behaviour</th></tr></thead>
+            <tbody>
+              <tr><td><code>sm</code></td><td>640</td><td>2-column stat cards</td></tr>
+              <tr><td><code>md</code></td><td>768</td><td>Sidebar can appear; 2-column forms</td></tr>
+              <tr><td><code>lg</code></td><td>1024</td><td>Persistent sidebar; 3-column cards</td></tr>
+              <tr><td><code>xl</code></td><td>1280</td><td>4-column stat cards; side panels</td></tr>
+              <tr><td><code>2xl</code></td><td>1536</td><td>Max content width; wider tables</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="elevation">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 · Elevation &amp; motion</p>
+            <h2 class="section-title">Borders do the work. Shadows confirm the layer.</h2>
+            <p class="section-lede">Cards use a 1px border plus a small shadow. Modals and drawers get the larger shadows. Motion is quick, directional and optional.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="specimen">
+            <h3 class="specimen-title">Elevation</h3>
+            <div class="shadow-grid">
+              <div class="shadow-card" style="box-shadow:var(--vms-shadow-xs)"><code>xs</code><span>Inputs</span></div>
+              <div class="shadow-card" style="box-shadow:var(--vms-shadow-sm)"><code>sm</code><span>Cards</span></div>
+              <div class="shadow-card" style="box-shadow:var(--vms-shadow-md)"><code>md</code><span>Hover / dropdown</span></div>
+              <div class="shadow-card" style="box-shadow:var(--vms-shadow-lg)"><code>lg</code><span>Popover</span></div>
+              <div class="shadow-card" style="box-shadow:var(--vms-shadow-xl)"><code>xl</code><span>Modal / drawer</span></div>
+              <div class="shadow-card" style="box-shadow:var(--vms-shadow-2xl)"><code>2xl</code><span>Command palette</span></div>
+            </div>
+          </div>
+          <div class="specimen">
+            <h3 class="specimen-title">Radius</h3>
+            <div class="radius-grid">
+              <div class="radius-card"><span style="border-radius:4px"></span><code>xs · 4</code></div>
+              <div class="radius-card"><span style="border-radius:6px"></span><code>sm · 6</code></div>
+              <div class="radius-card"><span style="border-radius:8px"></span><code>md · 8</code></div>
+              <div class="radius-card"><span style="border-radius:12px"></span><code>lg · 12</code></div>
+              <div class="radius-card"><span style="border-radius:16px"></span><code>xl · 16</code></div>
+              <div class="radius-card"><span style="border-radius:9999px"></span><code>full</code></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Motion</h3><span>Transform and opacity only</span></div>
+        <div class="specimen">
+          <div class="motion-list">
+            <div class="motion-row"><code>fast · 120ms</code><span class="motion-track"><i style="--d:120ms"></i></span><span>Hover, colour, icon</span></div>
+            <div class="motion-row"><code>base · 180ms</code><span class="motion-track"><i style="--d:180ms"></i></span><span>Dropdown, tooltip, tab</span></div>
+            <div class="motion-row"><code>moderate · 240ms</code><span class="motion-track"><i style="--d:240ms"></i></span><span>Modal, drawer, toast</span></div>
+            <div class="motion-row"><code>slow · 320ms</code><span class="motion-track"><i style="--d:320ms"></i></span><span>Large panel</span></div>
+          </div>
+          <p class="muted mt-16">Easing: <code>cubic-bezier(.2, 0, 0, 1)</code>. With <code>prefers-reduced-motion: reduce</code>, remove transforms and keep state changes instant. Never remove focus feedback.</p>
+        </div>
+      </section>
+
+      <section class="section" id="components">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">06 · Components</p>
+            <h2 class="section-title">The working parts.</h2>
+            <p class="section-lede">Every specimen below is rendered with the same tokens the React components will consume. Variants, sizes and states are the contract — not suggestions.</p>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Buttons</h3><span>One primary per view · heights 28 / 32 / 40 / 48</span></div>
+        <div class="specimen">
+          <div class="demo-block">
+            <span class="demo-label">Variants</span>
+            <div class="row">
+              <button class="vms-btn vms-btn--primary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Create job</button>
+              <button class="vms-btn vms-btn--secondary" type="button">Assign</button>
+              <button class="vms-btn vms-btn--ghost" type="button">Cancel</button>
+              <button class="vms-btn vms-btn--danger" type="button"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>Delete</button>
+              <button class="vms-btn vms-btn--danger-ghost" type="button">Remove</button>
+              <button class="vms-btn vms-btn--link" type="button">View details</button>
+            </div>
+          </div>
+          <div class="demo-block">
+            <span class="demo-label">Sizes</span>
+            <div class="row row--baseline">
+              <button class="vms-btn vms-btn--primary vms-btn--xs" type="button">Extra small</button>
+              <button class="vms-btn vms-btn--primary vms-btn--sm" type="button">Small</button>
+              <button class="vms-btn vms-btn--primary" type="button">Medium</button>
+              <button class="vms-btn vms-btn--primary vms-btn--lg" type="button">Large</button>
+              <button class="vms-btn vms-btn--secondary vms-btn--icon" type="button" aria-label="Search"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></button>
+              <button class="vms-btn vms-btn--secondary vms-btn--icon vms-btn--sm" type="button" aria-label="More actions"><svg class="icon" aria-hidden="true"><use href="#i-more"/></svg></button>
+            </div>
+          </div>
+          <div class="demo-block">
+            <span class="demo-label">States</span>
+            <div class="row">
+              <button class="vms-btn vms-btn--primary" type="button">Default</button>
+              <button class="vms-btn vms-btn--primary is-hover" type="button">Hover</button>
+              <button class="vms-btn vms-btn--primary is-loading" type="button" aria-busy="true"><span class="spinner" aria-hidden="true"></span>Saving…</button>
+              <button class="vms-btn vms-btn--primary" type="button" disabled>Disabled</button>
+              <button class="vms-btn vms-btn--secondary" type="button" disabled>Disabled</button>
+            </div>
+          </div>
+          <div class="demo-block">
+            <span class="demo-label">Full width</span>
+            <button class="vms-btn vms-btn--primary vms-btn--block" type="button">Create booking</button>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Forms</h3><span>Visible labels · 6px label gap · 16px field gap</span></div>
+        <div class="specimen">
+          <div class="form-grid">
+            <div class="vms-field">
+              <label class="vms-label" for="demoName">Customer name</label>
+              <input class="vms-input" id="demoName" placeholder="e.g. Ada Okafor">
+              <span class="vms-hint">Use the name on the invoice.</span>
+            </div>
+            <div class="vms-field">
+              <label class="vms-label" for="demoPlate">Plate number <span class="req" aria-hidden="true">*</span></label>
+              <input class="vms-input mono" id="demoPlate" value="LAG-482-XY">
+              <span class="vms-hint">Uppercase, 6–8 characters.</span>
+            </div>
+            <div class="vms-field">
+              <label class="vms-label" for="demoError">Email</label>
+              <input class="vms-input vms-input--error" id="demoError" value="ada@" aria-invalid="true" aria-describedby="demoErrorText">
+              <span class="vms-error" id="demoErrorText">Enter a complete email address.</span>
+            </div>
+            <div class="vms-field">
+              <label class="vms-label" for="demoDisabled">Workshop</label>
+              <input class="vms-input" id="demoDisabled" value="Lagos · Ikeja" disabled>
+              <span class="vms-hint">Set by your branch admin.</span>
+            </div>
+            <div class="vms-field">
+              <label class="vms-label" for="demoSelect">Service type</label>
+              <select class="vms-select" id="demoSelect"><option>Full service</option><option>Brake inspection</option><option>Diagnostics</option></select>
+            </div>
+            <div class="vms-field">
+              <label class="vms-label" for="demoSearch">Search</label>
+              <div class="vms-search"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input class="vms-input" id="demoSearch" placeholder="Search jobs, customers, plates…"></div>
+            </div>
+            <div class="vms-field vms-field--wide">
+              <label class="vms-label" for="demoNote">Job description</label>
+              <textarea class="vms-textarea" id="demoNote" rows="3" placeholder="Describe the work to be done"></textarea>
+              <span class="vms-hint">Visible to the technician and the customer.</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <label class="vms-check"><input type="checkbox" checked><span>Send SMS update</span></label>
+            <label class="vms-check"><input type="checkbox"><span>Create invoice on completion</span></label>
+            <label class="vms-check"><input type="radio" name="priority" checked><span>Normal priority</span></label>
+            <label class="vms-check"><input type="radio" name="priority"><span>Urgent</span></label>
+            <label class="vms-switch"><input type="checkbox" checked><span class="switch-track"></span><span>Auto-assign technician</span></label>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Status pills</h3><span>Dot + label · 20 / 24px</span></div>
+        <div class="specimen">
+          <div class="demo-block">
+            <span class="demo-label">Tones</span>
+            <div class="row">
+              <span class="vms-badge vms-badge--primary"><span class="dot"></span>In progress</span>
+              <span class="vms-badge vms-badge--success"><span class="dot"></span>Completed</span>
+              <span class="vms-badge vms-badge--warning"><span class="dot"></span>Awaiting parts</span>
+              <span class="vms-badge vms-badge--danger"><span class="dot"></span>Overdue</span>
+              <span class="vms-badge vms-badge--info"><span class="dot"></span>Scheduled</span>
+              <span class="vms-badge vms-badge--accent"><span class="dot"></span>Awaiting approval</span>
+              <span class="vms-badge vms-badge--neutral"><span class="dot"></span>Draft</span>
+            </div>
+          </div>
+          <div class="demo-block">
+            <span class="demo-label">Sizes</span>
+            <div class="row row--baseline">
+              <span class="vms-badge vms-badge--sm vms-badge--success"><span class="dot"></span>Small</span>
+              <span class="vms-badge vms-badge--success"><span class="dot"></span>Medium</span>
+              <span class="vms-badge vms-badge--primary"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg>With icon</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Cards &amp; stats</h3><span>1px border + shadow.sm · radius 12</span></div>
+        <div class="stat-grid">
+          <div class="vms-card vms-stat"><div class="vms-card-body">
+            <div class="stat-top"><span class="overline">Jobs today</span><span class="stat-icon" style="--tint:var(--vms-primary-subtle);--ink:var(--vms-primary-fg-subtle)"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span></div>
+            <div class="stat-value">128</div>
+            <div class="stat-delta up"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>12.4% <span>vs last week</span></div>
+          </div></div>
+          <div class="vms-card vms-stat"><div class="vms-card-body">
+            <div class="stat-top"><span class="overline">Vehicles in bay</span><span class="stat-icon" style="--tint:var(--vms-info-bg);--ink:var(--vms-info-fg)"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span></div>
+            <div class="stat-value">36</div>
+            <div class="stat-delta up"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>4.1% <span>vs yesterday</span></div>
+          </div></div>
+          <div class="vms-card vms-stat"><div class="vms-card-body">
+            <div class="stat-top"><span class="overline">Revenue</span><span class="stat-icon" style="--tint:var(--vms-success-bg);--ink:var(--vms-success-fg)"><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg></span></div>
+            <div class="stat-value">₦4.8m</div>
+            <div class="stat-delta up"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>8.7% <span>vs last month</span></div>
+          </div></div>
+          <div class="vms-card vms-stat"><div class="vms-card-body">
+            <div class="stat-top"><span class="overline">Overdue</span><span class="stat-icon" style="--tint:var(--vms-danger-bg);--ink:var(--vms-danger-fg)"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span></div>
+            <div class="stat-value">7</div>
+            <div class="stat-delta down"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>2.0% <span>vs last week</span></div>
+          </div></div>
+        </div>
+
+        <div class="subhead"><h3>Data table</h3><span>Row 48 · sticky header · tabular numbers</span></div>
+        <div class="specimen specimen--flush">
+          <div class="table-toolbar">
+            <div><strong>Jobs</strong><span class="count">24</span></div>
+            <div class="row row--tight">
+              <div class="vms-search vms-search--sm"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input class="vms-input" placeholder="Search jobs…" aria-label="Search jobs"></div>
+              <button class="vms-btn vms-btn--secondary vms-btn--sm" type="button"><svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg>Filter</button>
+              <button class="vms-btn vms-btn--secondary vms-btn--sm" type="button" aria-label="Export"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+            </div>
+          </div>
+          <div class="vms-table-wrap">
+            <table class="vms-table">
+              <thead><tr><th scope="col">Job</th><th scope="col">Customer</th><th scope="col">Vehicle</th><th scope="col">Status</th><th scope="col">Due</th><th scope="col" class="num">Amount</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+              <tbody>
+                <tr><td><code>JB-1042</code></td><td>Ada Okafor</td><td><span class="mono">LAG-482-XY</span></td><td><span class="vms-badge vms-badge--primary"><span class="dot"></span>In progress</span></td><td>9 Nov</td><td class="num">₦84,500</td><td class="actions"><button class="icon-btn icon-btn--sm" type="button" aria-label="View JB-1042"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button><button class="icon-btn icon-btn--sm" type="button" aria-label="Edit JB-1042"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button></td></tr>
+                <tr><td><code>JB-1041</code></td><td>Lagos Ride</td><td><span class="mono">KJA-119-AB</span></td><td><span class="vms-badge vms-badge--warning"><span class="dot"></span>Awaiting parts</span></td><td>10 Nov</td><td class="num">₦126,000</td><td class="actions"><button class="icon-btn icon-btn--sm" type="button" aria-label="View JB-1041"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button><button class="icon-btn icon-btn--sm" type="button" aria-label="Edit JB-1041"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button></td></tr>
+                <tr><td><code>JB-1040</code></td><td>GaragePro</td><td><span class="mono">ABJ-907-KL</span></td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>Completed</span></td><td>8 Nov</td><td class="num">₦42,000</td><td class="actions"><button class="icon-btn icon-btn--sm" type="button" aria-label="View JB-1040"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button><button class="icon-btn icon-btn--sm" type="button" aria-label="Edit JB-1040"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button></td></tr>
+                <tr><td><code>JB-1039</code></td><td>Adaeze Nwosu</td><td><span class="mono">LAG-330-QQ</span></td><td><span class="vms-badge vms-badge--danger"><span class="dot"></span>Overdue</span></td><td>6 Nov</td><td class="num">₦58,000</td><td class="actions"><button class="icon-btn icon-btn--sm" type="button" aria-label="View JB-1039"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button><button class="icon-btn icon-btn--sm" type="button" aria-label="Edit JB-1039"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button></td></tr>
+                <tr><td><code>JB-1038</code></td><td>Musa Ibrahim</td><td><span class="mono">KAN-551-ZZ</span></td><td><span class="vms-badge vms-badge--info"><span class="dot"></span>Scheduled</span></td><td>12 Nov</td><td class="num">₦31,500</td><td class="actions"><button class="icon-btn icon-btn--sm" type="button" aria-label="View JB-1038"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button><button class="icon-btn icon-btn--sm" type="button" aria-label="Edit JB-1038"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-foot">
+            <span>1–5 of 24 jobs</span>
+            <div class="vms-pagination" aria-label="Pagination">
+              <button class="vms-page" type="button" disabled aria-label="Previous page"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>
+              <button class="vms-page" type="button" aria-current="page">1</button>
+              <button class="vms-page" type="button">2</button>
+              <button class="vms-page" type="button">3</button>
+              <button class="vms-page" type="button" aria-label="Next page"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Alerts</h3><span>Persistent, inline, actionable</span></div>
+        <div class="alert-stack">
+          <div class="vms-alert vms-alert--info" role="status"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><div><strong>New inspection template</strong><span>Brake inspections now require a photo of each pad. Update your checklist before the next job.</span></div></div>
+          <div class="vms-alert vms-alert--success" role="status"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Import complete</strong><span>248 customers and 312 vehicles were added. <a href="#components">Review the import</a>.</span></div></div>
+          <div class="vms-alert vms-alert--warning" role="status"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><div><strong>Low stock</strong><span>Only 3 brake pads left at Ikeja. <a href="#components">Create a purchase order</a>.</span></div></div>
+          <div class="vms-alert vms-alert--danger" role="alert"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><div><strong>Payment failed</strong><span>We couldn’t charge the card ending 4242. Update the payment method to keep the subscription active.</span></div></div>
+        </div>
+
+        <div class="subhead"><h3>Tabs</h3><span>Underline · 44px · URL-backed</span></div>
+        <div class="specimen">
+          <div class="vms-tabs" role="tablist" aria-label="Job sections">
+            <button class="vms-tab" role="tab" aria-selected="true" aria-controls="tab-overview" id="tab-overview-btn" type="button">Overview</button>
+            <button class="vms-tab" role="tab" aria-selected="false" aria-controls="tab-activity" id="tab-activity-btn" type="button">Activity <span class="tab-count">12</span></button>
+            <button class="vms-tab" role="tab" aria-selected="false" aria-controls="tab-files" id="tab-files-btn" type="button">Files <span class="tab-count">3</span></button>
+          </div>
+          <div class="tab-panel" role="tabpanel" id="tab-overview" aria-labelledby="tab-overview-btn"><p class="t-body">Full service, brake inspection and diagnostics. Assigned to Tunde A. in bay 3.</p></div>
+          <div class="tab-panel" role="tabpanel" id="tab-activity" aria-labelledby="tab-activity-btn" hidden><p class="t-body">12 events: created, assigned, started, parts requested, parts received, completed.</p></div>
+          <div class="tab-panel" role="tabpanel" id="tab-files" aria-labelledby="tab-files-btn" hidden><p class="t-body">3 files: inspection.pdf, before.jpg, after.jpg.</p></div>
+        </div>
+
+        <div class="subhead"><h3>Overlays &amp; feedback</h3><span>Modal · toast · confirm</span></div>
+        <div class="specimen">
+          <div class="row">
+            <button class="vms-btn vms-btn--primary" type="button" data-open-modal><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Open modal</button>
+            <button class="vms-btn vms-btn--secondary" type="button" data-toast="success" data-message="Job JB-1043 created.">Success toast</button>
+            <button class="vms-btn vms-btn--secondary" type="button" data-toast="warning" data-message="Only 3 brake pads left at Ikeja.">Warning toast</button>
+            <button class="vms-btn vms-btn--secondary" type="button" data-toast="danger" data-message="We couldn’t save this job. Check your connection and try again.">Error toast</button>
+          </div>
+          <p class="muted mt-16">Modals trap focus, close on Esc and return focus to the trigger. Toasts stack to three and never auto-dismiss an error.</p>
+        </div>
+
+        <div class="subhead"><h3>Empty, loading &amp; icons</h3><span>Never leave a blank surface</span></div>
+        <div class="grid-2">
+          <div class="specimen">
+            <div class="vms-empty">
+              <span class="empty-icon" aria-hidden="true"><svg class="icon"><use href="#i-wrench"/></svg></span>
+              <h3>No jobs yet</h3>
+              <p>Create the first job to start tracking work, parts and payments.</p>
+              <button class="vms-btn vms-btn--primary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Create job</button>
+            </div>
+          </div>
+          <div class="specimen">
+            <div class="skeleton-list" role="status" aria-busy="true" aria-label="Loading jobs">
+              <div class="skeleton skeleton--title"></div>
+              <div class="skeleton skeleton--line"></div>
+              <div class="skeleton skeleton--line skeleton--short"></div>
+              <div class="skeleton skeleton--line"></div>
+              <div class="skeleton skeleton--line skeleton--short"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="icon-grid">
+            <span><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg><code>car</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg><code>wrench</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><code>calendar</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><code>users</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><code>file-text</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg><code>settings</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><code>search</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><code>bell</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg><code>dollar</code></span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-activity"/></svg><code>activity</code></span>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="section" id="patterns">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">07 · Patterns</p>
+            <h2 class="section-title">The shapes pages take.</h2>
+            <p class="section-lede">Patterns combine components into repeatable page structures. Start from these before inventing a new layout.</p>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Page header</h3><span>Breadcrumb · title · one primary action</span></div>
+        <div class="specimen">
+          <div class="crumbs"><a href="#patterns">Home</a><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><a href="#patterns">Jobs</a><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span aria-current="page">JB-1042</span></div>
+          <div class="page-header-row">
+            <div><h3 class="page-title">Full service · JB-1042</h3><p class="page-subtitle">LAG-482-XY · Ada Okafor · Bay 3</p></div>
+            <div class="row"><button class="vms-btn vms-btn--secondary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Export</button><button class="vms-btn vms-btn--primary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Mark complete</button></div>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Filter bar</h3><span>Search · chips · count · clear</span></div>
+        <div class="specimen">
+          <div class="filter-bar">
+            <div class="vms-search vms-search--sm"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input class="vms-input" placeholder="Search jobs…" aria-label="Search jobs"></div>
+            <button class="filter-chip" type="button">Status: In progress <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+            <button class="filter-chip" type="button">Bay: 3 <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+            <button class="vms-btn vms-btn--ghost vms-btn--sm" type="button">Clear all</button>
+            <span class="filter-count">24 jobs</span>
+          </div>
+        </div>
+
+        <div class="subhead"><h3>Status taxonomy</h3><span>Validate with operations before wiring the API</span></div>
+        <div class="grid-2">
+          <div class="specimen table-simple">
+            <h3 class="specimen-title">Jobs</h3>
+            <table class="vms-table">
+              <thead><tr><th>Status</th><th>Tone</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td>Draft</td><td><span class="vms-badge vms-badge--neutral"><span class="dot"></span>Neutral</span></td><td>Created, not scheduled</td></tr>
+                <tr><td>Scheduled</td><td><span class="vms-badge vms-badge--info"><span class="dot"></span>Info</span></td><td>Date and technician set</td></tr>
+                <tr><td>In progress</td><td><span class="vms-badge vms-badge--primary"><span class="dot"></span>Primary</span></td><td>Work has started</td></tr>
+                <tr><td>Awaiting parts</td><td><span class="vms-badge vms-badge--warning"><span class="dot"></span>Warning</span></td><td>Blocked on inventory</td></tr>
+                <tr><td>Awaiting approval</td><td><span class="vms-badge vms-badge--accent"><span class="dot"></span>Accent</span></td><td>Waiting on customer</td></tr>
+                <tr><td>Completed</td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>Success</span></td><td>Work finished</td></tr>
+                <tr><td>Overdue</td><td><span class="vms-badge vms-badge--danger"><span class="dot"></span>Danger</span></td><td>Past the promised date</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="specimen table-simple">
+            <h3 class="specimen-title">Invoices</h3>
+            <table class="vms-table">
+              <thead><tr><th>Status</th><th>Tone</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td>Draft</td><td><span class="vms-badge vms-badge--neutral"><span class="dot"></span>Neutral</span></td><td>Not sent</td></tr>
+                <tr><td>Sent</td><td><span class="vms-badge vms-badge--info"><span class="dot"></span>Info</span></td><td>Awaiting payment</td></tr>
+                <tr><td>Partially paid</td><td><span class="vms-badge vms-badge--warning"><span class="dot"></span>Warning</span></td><td>Deposit received</td></tr>
+                <tr><td>Paid</td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>Success</span></td><td>Settled</td></tr>
+                <tr><td>Overdue</td><td><span class="vms-badge vms-badge--danger"><span class="dot"></span>Danger</span></td><td>Past due date</td></tr>
+                <tr><td>Void</td><td><span class="vms-badge vms-badge--neutral"><span class="dot"></span>Neutral</span></td><td>Cancelled</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="accessibility">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">08 · Accessibility</p>
+            <h2 class="section-title">AA is the floor.</h2>
+            <p class="section-lede">Every colour pair below was measured. Every component spec includes keyboard, focus and screen-reader behaviour. Test with a keyboard, not just a mouse.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="specimen table-simple">
+            <h3 class="specimen-title">Measured contrast · light theme</h3>
+            <table class="vms-table">
+              <thead><tr><th>Pair</th><th class="num">Ratio</th><th>Verdict</th></tr></thead>
+              <tbody>
+                <tr><td>Primary text on surface</td><td class="num">17.75</td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>AAA</span></td></tr>
+                <tr><td>Secondary text on surface</td><td class="num">7.69</td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>AAA</span></td></tr>
+                <tr><td>Tertiary text on surface</td><td class="num">4.97</td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>AA</span></td></tr>
+                <tr><td>White on primary</td><td class="num">4.70</td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>AA</span></td></tr>
+                <tr><td>Primary text on primary tint</td><td class="num">6.12</td><td><span class="vms-badge vms-badge--success"><span class="dot"></span>AA</span></td></tr>
+                <tr><td>Brand yellow on white</td><td class="num">1.15</td><td><span class="vms-badge vms-badge--danger"><span class="dot"></span>Decorative</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="specimen">
+            <h3 class="specimen-title">Checklist</h3>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Focus is visible on every interactive element: 2px ring, 2px offset.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Labels are visible; placeholders are examples, never labels.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Status is a dot <em>and</em> a label — never colour alone.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Tables have a caption, scoped headers and <code>aria-sort</code>.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Dialogs trap focus, close on Esc and return focus to the trigger.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Toasts use <code>aria-live</code>; errors are assertive.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Targets are ≥ 24px; 44px on touch.</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Reduced motion, 200% zoom and 320px reflow are tested.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>
+          <strong>VecroMS Design System</strong>
+          <span>v1.0.0 · 9 November 2026</span>
+        </div>
+        <p>Edit <code>tokens/tokens.json</code>, then run <code>node tokens/build.mjs</code>. Never edit <code>tokens.css</code> by hand.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <dialog class="vms-dialog" id="demoModal" aria-labelledby="demoModalTitle">
+    <div class="vms-dialog-head">
+      <h2 id="demoModalTitle">Create a job</h2>
+      <button class="icon-btn" type="button" data-close-modal aria-label="Close dialog"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="vms-dialog-body">
+      <div class="vms-field">
+        <label class="vms-label" for="modalCustomer">Customer</label>
+        <select class="vms-select" id="modalCustomer"><option>Ada Okafor</option><option>Lagos Ride</option><option>GaragePro</option></select>
+      </div>
+      <div class="vms-field">
+        <label class="vms-label" for="modalVehicle">Vehicle</label>
+        <input class="vms-input" id="modalVehicle" placeholder="Plate or VIN" value="LAG-482-XY">
+      </div>
+      <div class="vms-field">
+        <label class="vms-label" for="modalNote">Job description</label>
+        <textarea class="vms-textarea" id="modalNote" rows="3" placeholder="Describe the work to be done"></textarea>
+      </div>
+    </div>
+    <div class="vms-dialog-foot">
+      <button class="vms-btn vms-btn--secondary" type="button" data-close-modal>Cancel</button>
+      <button class="vms-btn vms-btn--primary" type="button" data-close-modal data-toast="success" data-message="Job JB-1043 created.">Create job</button>
+    </div>
+  </dialog>
+
+  <script src="assets/styleguide.js"></script>
+</body>
+</html>

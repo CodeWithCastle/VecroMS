@@ -1,0 +1,16 @@
+@import './styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: var(--vms-font-sans, Inter, system-ui, sans-serif);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--vms-surface-page, #f8fafc);
+  color: var(--vms-text-primary, #0f172a);
+}
