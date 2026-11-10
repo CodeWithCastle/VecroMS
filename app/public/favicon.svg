@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="VecroMS">
-  <g transform="translate(2,14)">
-    <path d="M4 22 C4 16 8 12 14 12 L20 12 L26 4 L40 4 L46 12 L54 12 C60 12 64 16 64 22 L64 28 L4 28 Z"
+  <g transform="translate(2,10)">
+    <path d="M2 32 C2 24 7 20 14 20 L20 20 L26 10 L42 10 L48 20 L56 20 C62 20 66 24 66 32 L66 38 L2 38 Z"
           fill="none" stroke="#00923F" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M22 10 L26 4 L38 4 L42 10 Z" fill="#FFF500" stroke="#00923F" stroke-width="1.5"/>
-    <circle cx="16" cy="30" r="5" fill="none" stroke="#00923F" stroke-width="3"/>
-    <circle cx="50" cy="30" r="5" fill="none" stroke="#00923F" stroke-width="3"/>
+    <path d="M24 18 L28 12 L40 12 L44 18 Z" fill="#FFF500" stroke="#00923F" stroke-width="1.5"/>
+    <circle cx="16" cy="40" r="6" fill="none" stroke="#00923F" stroke-width="3"/>
+    <circle cx="52" cy="40" r="6" fill="none" stroke="#00923F" stroke-width="3"/>
   </g>
 </svg>

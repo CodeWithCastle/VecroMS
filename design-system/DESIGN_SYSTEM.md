@@ -38,9 +38,21 @@ The existing product mark is a green car outline with yellow windows and road da
 | Brand green | `#00923F` | Car body / wordmark |
 | Brand yellow | `#FFF500` | Windows / road dashes |
 
-The repository and the React product are **VecroMS (Vehicle Reporting and Organization Management Systems)**. Until a new wordmark exists, keep the car symbol and replace only the wordmark; do not redraw or recolour the symbol.
+The repository and the React product are **VecroMS (Vehicle Reporting and Organization Management Systems)**. The brand identity preserves the iconic car symbol and pairs it with an engineered, modern upright wordmark (`Vecro` in 800-weight neo-grotesque, `MS` in 700-weight with positive tracking).
 
-**Clearspace:** at least `0.5 ×` the height of the mark on every side.
+#### Deliverable Assets (`app/public/brand/` and `design-system/assets/brand/`)
+- **`logo.svg`**: Canonical primary horizontal logo (Brand Green `#00923F`).
+- **`logo-twotone.svg`**: Workshop Pro Two-Tone (Deep Slate `#0F172A` "Vecro" + Brand Green `#00923F` "MS") for maximum light-theme contrast.
+- **`logo-dark.svg`**: Dark mode lockup (Green/Yellow mark + White `#FFFFFF` "Vecro" and Yellow `#FFF500` "MS").
+- **`logo-white.svg`**: Strict white wordmark on dark surfaces (`#0B1220`).
+- **`logo-mono-dark.svg`**: Single-color Deep Slate `#0F172A` / `#000000` for physical invoices, job cards, and thermal receipt printing.
+- **`logo-mono-light.svg`**: Single-color White for solid reverse backgrounds.
+- **`logo-descriptor.svg`**: Primary logo with "WORKSHOP & FLEET MANAGEMENT" subtitle for official documentation and reports.
+- **`symbol.svg`**: Standalone car mark (120×72).
+- **`favicon.svg`**: Pixel-snapped 64×64 browser favicon.
+- **`app-icon.svg` / `app-icon-light.svg`**: Squircle app icon and dashboard avatar.
+
+**Clearspace:** at least `0.5 ×` the height of the mark (24px) on every side. All primary SVGs feature built-in 24px clearspace bounding boxes (`viewBox="0 0 340 96"`).
 **Minimum width:** 96px digital, 24mm print.
 **On dark:** use the white wordmark; the green symbol stays green. Never place the green wordmark on navy.
 

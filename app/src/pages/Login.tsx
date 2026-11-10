@@ -5,9 +5,8 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface-subtle">
       <div className="w-full max-w-md bg-surface rounded-xl shadow-sm border border-slate-200 p-8">
-        <div className="flex items-center gap-2 mb-6">
-          <img src="/brand/logo.svg" alt="VecroMS" className="h-8" />
-          <span className="font-semibold text-lg">VecroMS</span>
+        <div className="flex items-center mb-6">
+          <img src="/brand/logo.svg" alt="VecroMS" className="h-9 w-auto" />
         </div>
         <h1 className="text-xl font-semibold mb-1">Sign in</h1>
         <p className="text-ink-secondary text-sm mb-6">Vehicle Reporting and Organization Management Systems</p>

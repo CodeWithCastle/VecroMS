@@ -17,9 +17,8 @@ const links = [
 export default function Sidebar() {
   return (
     <aside className="hidden md:flex md:flex-col w-64 bg-white border-r border-slate-200 fixed inset-y-0 left-0 z-30">
-      <div className="flex items-center gap-2 px-6 py-5 border-b border-slate-100">
-        <img src="/brand/logo.svg" alt="VecroMS" className="h-8" />
-        <span className="font-semibold text-slate-800">VecroMS</span>
+      <div className="flex items-center px-6 py-5 border-b border-slate-100">
+        <img src="/brand/logo.svg" alt="VecroMS" className="h-8 w-auto" />
       </div>
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
         {links.map(({ to, label, icon: Icon }) => (
